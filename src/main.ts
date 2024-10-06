@@ -1,25 +1,20 @@
 import "dotenv/config";
-import express from "express";
-import cors from "cors";
+
+import Fastify from "fastify";
 import { db } from "./services/db";
+import cors from "@fastify/cors";
 
-const app = express();
+const app = Fastify({
+  logger: true
+});
 
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true
-  })
-);
+app.register(cors, {
+  origin: true
+});
 
-app.get("/", async (req, res, next) => {
-  try {
-    const tables = await db.introspection.getTables();
-
-    res.send(tables);
-  } catch (e) {
-    next(e);
-  }
+app.get("/", async (req, res) => {
+  const tables = await db.introspection.getTables();
+  res.send(tables);
 });
 
 app.get("/movie", (req, res) => {
@@ -34,6 +29,6 @@ app.get("/person/:id", (req, res) => {
   res.send({});
 });
 
-app.listen(process.env.PORT, () => {
+app.listen({ port: parseInt(process.env.PORT as string, 10) }, () => {
   console.log(`LISTENING IN PORT ${process.env.PORT}`);
 });
