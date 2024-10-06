@@ -20,5 +20,6 @@ If you don't have your own database or are not happy with it, my own version is 
 - `npm i`
 - `cp .env.example .env`
 - open and edit `.env` file as necessary
+- `npm run kysely-codegen`
 - `npm run dev`
 - open http://localhost:10000/ in your browser and assert that you get some frightening database meta information to your screen.
