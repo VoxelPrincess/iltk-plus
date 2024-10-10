@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: actor; Type: TABLE; Schema: public; Owner: pekkis
+-- Name: actor; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.actor (
@@ -31,10 +31,8 @@ CREATE TABLE public.actor (
 );
 
 
-ALTER TABLE public.actor OWNER TO pekkis;
-
 --
--- Name: director; Type: TABLE; Schema: public; Owner: pekkis
+-- Name: director; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.director (
@@ -43,10 +41,8 @@ CREATE TABLE public.director (
 );
 
 
-ALTER TABLE public.director OWNER TO pekkis;
-
 --
--- Name: movie; Type: TABLE; Schema: public; Owner: pekkis
+-- Name: movie; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.movie (
@@ -57,10 +53,8 @@ CREATE TABLE public.movie (
 );
 
 
-ALTER TABLE public.movie OWNER TO pekkis;
-
 --
--- Name: movie_id_seq; Type: SEQUENCE; Schema: public; Owner: pekkis
+-- Name: movie_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 ALTER TABLE public.movie ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
@@ -74,7 +68,7 @@ ALTER TABLE public.movie ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Name: person; Type: TABLE; Schema: public; Owner: pekkis
+-- Name: person; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.person (
@@ -86,10 +80,8 @@ CREATE TABLE public.person (
 );
 
 
-ALTER TABLE public.person OWNER TO pekkis;
-
 --
--- Name: person_id_seq; Type: SEQUENCE; Schema: public; Owner: pekkis
+-- Name: person_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 ALTER TABLE public.person ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
@@ -103,7 +95,7 @@ ALTER TABLE public.person ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Name: person_picture; Type: TABLE; Schema: public; Owner: pekkis
+-- Name: person_picture; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.person_picture (
@@ -113,10 +105,8 @@ CREATE TABLE public.person_picture (
 );
 
 
-ALTER TABLE public.person_picture OWNER TO pekkis;
-
 --
--- Name: picture; Type: TABLE; Schema: public; Owner: pekkis
+-- Name: picture; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.picture (
@@ -126,10 +116,8 @@ CREATE TABLE public.picture (
 );
 
 
-ALTER TABLE public.picture OWNER TO pekkis;
-
 --
--- Name: picture_id_seq; Type: SEQUENCE; Schema: public; Owner: pekkis
+-- Name: picture_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 ALTER TABLE public.picture ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
@@ -143,7 +131,7 @@ ALTER TABLE public.picture ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Name: premiere; Type: TABLE; Schema: public; Owner: pekkis
+-- Name: premiere; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.premiere (
@@ -153,10 +141,8 @@ CREATE TABLE public.premiere (
 );
 
 
-ALTER TABLE public.premiere OWNER TO pekkis;
-
 --
--- Name: review; Type: TABLE; Schema: public; Owner: pekkis
+-- Name: review; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.review (
@@ -167,10 +153,8 @@ CREATE TABLE public.review (
 );
 
 
-ALTER TABLE public.review OWNER TO pekkis;
-
 --
--- Name: viewer; Type: TABLE; Schema: public; Owner: pekkis
+-- Name: viewer; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.viewer (
@@ -179,10 +163,8 @@ CREATE TABLE public.viewer (
 );
 
 
-ALTER TABLE public.viewer OWNER TO pekkis;
-
 --
--- Name: viewer_id_seq; Type: SEQUENCE; Schema: public; Owner: pekkis
+-- Name: viewer_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 ALTER TABLE public.viewer ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
@@ -196,7 +178,7 @@ ALTER TABLE public.viewer ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Data for Name: actor; Type: TABLE DATA; Schema: public; Owner: pekkis
+-- Data for Name: actor; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.actor (person_id, movie_id, role_name) FROM stdin;
@@ -216,7 +198,7 @@ COPY public.actor (person_id, movie_id, role_name) FROM stdin;
 
 
 --
--- Data for Name: director; Type: TABLE DATA; Schema: public; Owner: pekkis
+-- Data for Name: director; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.director (person_id, movie_id) FROM stdin;
@@ -226,7 +208,7 @@ COPY public.director (person_id, movie_id) FROM stdin;
 
 
 --
--- Data for Name: movie; Type: TABLE DATA; Schema: public; Owner: pekkis
+-- Data for Name: movie; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.movie (id, title, primary_picture, publish_year) FROM stdin;
@@ -238,7 +220,7 @@ COPY public.movie (id, title, primary_picture, publish_year) FROM stdin;
 
 
 --
--- Data for Name: person; Type: TABLE DATA; Schema: public; Owner: pekkis
+-- Data for Name: person; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.person (id, primary_picture, person_name, date_of_birth, date_of_death) FROM stdin;
@@ -252,7 +234,7 @@ COPY public.person (id, primary_picture, person_name, date_of_birth, date_of_dea
 
 
 --
--- Data for Name: person_picture; Type: TABLE DATA; Schema: public; Owner: pekkis
+-- Data for Name: person_picture; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.person_picture (person_id, picture_id, order_id) FROM stdin;
@@ -260,7 +242,7 @@ COPY public.person_picture (person_id, picture_id, order_id) FROM stdin;
 
 
 --
--- Data for Name: picture; Type: TABLE DATA; Schema: public; Owner: pekkis
+-- Data for Name: picture; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.picture (id, picture_description, picture_filename) FROM stdin;
@@ -273,7 +255,7 @@ COPY public.picture (id, picture_description, picture_filename) FROM stdin;
 
 
 --
--- Data for Name: premiere; Type: TABLE DATA; Schema: public; Owner: pekkis
+-- Data for Name: premiere; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.premiere (movie_id, country_code, premiere_date) FROM stdin;
@@ -283,7 +265,7 @@ COPY public.premiere (movie_id, country_code, premiere_date) FROM stdin;
 
 
 --
--- Data for Name: review; Type: TABLE DATA; Schema: public; Owner: pekkis
+-- Data for Name: review; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.review (movie_id, viewer_id, score) FROM stdin;
@@ -293,7 +275,7 @@ COPY public.review (movie_id, viewer_id, score) FROM stdin;
 
 
 --
--- Data for Name: viewer; Type: TABLE DATA; Schema: public; Owner: pekkis
+-- Data for Name: viewer; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.viewer (id, email) FROM stdin;
@@ -303,35 +285,35 @@ COPY public.viewer (id, email) FROM stdin;
 
 
 --
--- Name: movie_id_seq; Type: SEQUENCE SET; Schema: public; Owner: pekkis
+-- Name: movie_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.movie_id_seq', 4, true);
 
 
 --
--- Name: person_id_seq; Type: SEQUENCE SET; Schema: public; Owner: pekkis
+-- Name: person_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.person_id_seq', 7, true);
 
 
 --
--- Name: picture_id_seq; Type: SEQUENCE SET; Schema: public; Owner: pekkis
+-- Name: picture_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.picture_id_seq', 5, true);
 
 
 --
--- Name: viewer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: pekkis
+-- Name: viewer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.viewer_id_seq', 2, true);
 
 
 --
--- Name: actor actor_pkey; Type: CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: actor actor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.actor
@@ -339,7 +321,7 @@ ALTER TABLE ONLY public.actor
 
 
 --
--- Name: director director_pkey; Type: CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: director director_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.director
@@ -347,7 +329,7 @@ ALTER TABLE ONLY public.director
 
 
 --
--- Name: movie movie_pkey; Type: CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: movie movie_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.movie
@@ -355,7 +337,7 @@ ALTER TABLE ONLY public.movie
 
 
 --
--- Name: person_picture person_picture_pkey; Type: CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: person_picture person_picture_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.person_picture
@@ -363,7 +345,7 @@ ALTER TABLE ONLY public.person_picture
 
 
 --
--- Name: person person_pkey; Type: CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: person person_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.person
@@ -371,7 +353,7 @@ ALTER TABLE ONLY public.person
 
 
 --
--- Name: picture picture_picture_filename_key; Type: CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: picture picture_picture_filename_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.picture
@@ -379,7 +361,7 @@ ALTER TABLE ONLY public.picture
 
 
 --
--- Name: picture picture_pkey; Type: CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: picture picture_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.picture
@@ -387,7 +369,7 @@ ALTER TABLE ONLY public.picture
 
 
 --
--- Name: premiere premiere_pkey; Type: CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: premiere premiere_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.premiere
@@ -395,7 +377,7 @@ ALTER TABLE ONLY public.premiere
 
 
 --
--- Name: review review_pkey; Type: CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: review review_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.review
@@ -403,7 +385,7 @@ ALTER TABLE ONLY public.review
 
 
 --
--- Name: viewer viewer_email_key; Type: CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: viewer viewer_email_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.viewer
@@ -411,7 +393,7 @@ ALTER TABLE ONLY public.viewer
 
 
 --
--- Name: viewer viewer_pkey; Type: CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: viewer viewer_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.viewer
@@ -419,7 +401,7 @@ ALTER TABLE ONLY public.viewer
 
 
 --
--- Name: actor actor_movie_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: actor actor_movie_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.actor
@@ -427,7 +409,7 @@ ALTER TABLE ONLY public.actor
 
 
 --
--- Name: actor actor_person_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: actor actor_person_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.actor
@@ -435,7 +417,7 @@ ALTER TABLE ONLY public.actor
 
 
 --
--- Name: director director_movie_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: director director_movie_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.director
@@ -443,7 +425,7 @@ ALTER TABLE ONLY public.director
 
 
 --
--- Name: director director_person_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: director director_person_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.director
@@ -451,7 +433,7 @@ ALTER TABLE ONLY public.director
 
 
 --
--- Name: movie movie_primary_picture_fkey; Type: FK CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: movie movie_primary_picture_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.movie
@@ -459,7 +441,7 @@ ALTER TABLE ONLY public.movie
 
 
 --
--- Name: person_picture person_picture_person_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: person_picture person_picture_person_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.person_picture
@@ -467,7 +449,7 @@ ALTER TABLE ONLY public.person_picture
 
 
 --
--- Name: person_picture person_picture_picture_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: person_picture person_picture_picture_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.person_picture
@@ -475,7 +457,7 @@ ALTER TABLE ONLY public.person_picture
 
 
 --
--- Name: person person_primary_picture_fkey; Type: FK CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: person person_primary_picture_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.person
@@ -483,7 +465,7 @@ ALTER TABLE ONLY public.person
 
 
 --
--- Name: premiere premiere_movie_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: premiere premiere_movie_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.premiere
@@ -491,7 +473,7 @@ ALTER TABLE ONLY public.premiere
 
 
 --
--- Name: review review_movie_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: review review_movie_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.review
@@ -499,7 +481,7 @@ ALTER TABLE ONLY public.review
 
 
 --
--- Name: review review_viewer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: pekkis
+-- Name: review review_viewer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.review
