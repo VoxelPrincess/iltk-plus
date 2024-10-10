@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS person CASCADE;
 DROP TABLE IF EXISTS actor CASCADE;
 DROP TABLE IF EXISTS director CASCADE;
 DROP TABLE IF EXISTS picture CASCADE;
+DROP TABLE IF EXISTS person_picture CASCADE;
 
 DROP TABLE IF EXISTS viewer CASCADE;
 DROP TABLE IF EXISTS review CASCADE;
@@ -80,14 +81,14 @@ CREATE TABLE actor (
   movie_id BIGINT NOT NULL REFERENCES movie(id) ON DELETE CASCADE,
   role_name VARCHAR(255) NOT NULL,
   PRIMARY KEY(person_id, movie_id, role_name)
-);    
+);
 
 /* remember to drop me in the beginning */
 CREATE TABLE director (
   person_id BIGINT NOT NULL REFERENCES person(id) ON DELETE CASCADE,
   movie_id BIGINT NOT NULL REFERENCES movie(id) ON DELETE CASCADE,
   PRIMARY KEY(person_id, movie_id)
-);    
+);
 
 INSERT INTO movie (title, publish_year) VALUES ('The Matrix', 1999);
 
@@ -120,3 +121,6 @@ INSERT INTO viewer (email) VALUES ('puhemies@diktaattoriporssi.com');
 
 INSERT INTO review (movie_id, viewer_id, score) VALUES (1, 1, 9);
 INSERT INTO review (movie_id, viewer_id, score) VALUES (1, 2, 10);
+
+/* after live */
+

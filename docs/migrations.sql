@@ -1,0 +1,4 @@
+/* 2024-10-10 */
+
+ALTER TABLE movie
+  ADD COLUMN primary_picture BIGINT NULL REFERENCES picture(id) ON DELETE SET NULL;
