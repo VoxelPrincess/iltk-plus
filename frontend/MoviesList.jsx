@@ -1,6 +1,8 @@
+// MoviesList.js
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchMovies } from "./api";
+import "./MoviesList.css";
 
 const MoviesList = () => {
   const [movies, setMovies] = useState([]);
@@ -18,22 +20,24 @@ const MoviesList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="movies-list-container">
       <h1>Movies List</h1>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+      <div className="movies-grid">
         {movies.map((movie) => (
-          <div key={movie.id} style={{ margin: "20px" }}>
+          <div key={movie.id} className="movie-card">
             <Link to={`/movie/${movie.id}`}>
-              <img
-                src={movie.url}
-                alt={movie.title}
-                style={{ width: "150px", height: "220px", objectFit: "cover" }}
-              />
+              <img src={movie.url} alt={movie.title} className="movie-poster" />
             </Link>
-            <h3>{movie.title}</h3>
+            <h3 className="movie-title">{movie.title}</h3>
           </div>
         ))}
       </div>
+
+      <footer>
+        <Link to="/admin" className="admin-link">
+          Admin Panel
+        </Link>
+      </footer>
     </div>
   );
 };

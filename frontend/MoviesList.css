@@ -1,0 +1,61 @@
+/* MoviesList.css */
+.movies-list-container {
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #444;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.movies-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.movie-card {
+  width: 150px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-poster {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.movie-card .movie-title {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.admin-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.admin-link:hover {
+  color: #0056b3;
+}

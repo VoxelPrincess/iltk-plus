@@ -88,3 +88,122 @@ app.get("/person/:id", async (req, res) => {
 app.listen({ port: parseInt(process.env.PORT as string, 10) }, () => {
   console.log(`LISTENING IN PORT ${process.env.PORT}`);
 });
+
+app.post("/movie", async (req, res) => {
+  const { title, publish_year, picture_url } = req.body;
+
+  try {
+    // Шаг 1: Добавляем изображение в таблицу picture
+    const [newPicture] = await db
+      .insertInto("picture")
+      .values({
+        picture_description: `Image for ${title}`,
+        picture_filename: picture_url
+      })
+      .returning("id")
+      .execute();
+
+    const picture_id = newPicture.id;
+
+    // Шаг 2: Добавляем фильм в таблицу movie с ссылкой на picture_id
+    const [newMovie] = await db
+      .insertInto("movie")
+      .values({
+        title,
+        publish_year,
+        primary_picture: picture_id // Используем ID добавленной картинки
+      })
+      .returning(["id", "title", "publish_year", "primary_picture"])
+      .execute();
+
+    res.status(201).send(newMovie);
+  } catch (e) {
+    console.error("Error:", e);
+    res
+      .status(500)
+      .send({ message: "Error creating movie with picture", error: e.message });
+  }
+});
+
+app.delete("/movie/:id", async (req, res) => {
+  try {
+    await db.deleteFrom("movie").where("id", "=", req.params.id).execute();
+    res.status(204).send();
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({ message: "Error deleting movie" });
+  }
+});
+
+app.post("/actor", async (req, res) => {
+  try {
+    const { person_name, date_of_birth, date_of_death, movie_ids, role_name } =
+      req.body;
+
+    // Проверка обязательных данных
+    if (!person_name || !Array.isArray(movie_ids) || movie_ids.length === 0) {
+      return res.status(400).send({
+        message: "Invalid data: person_name and movie_ids are required"
+      });
+    }
+
+    // Создаём новую запись в таблице person и получаем person_id
+    const [newPerson] = await db
+      .insertInto("person")
+      .values({
+        person_name,
+        date_of_birth: date_of_birth || null,
+        date_of_death: date_of_death || null
+      })
+      .returning("id")
+      .execute();
+
+    const person_id = newPerson.id;
+
+    // Подготавливаем данные для вставки связей актёра с фильмами
+    const actorEntries = movie_ids.map((movie_id) => ({
+      person_id,
+      movie_id,
+      role_name
+    }));
+
+    // Вставляем связи актёра с выбранными фильмами
+    await db.insertInto("actor").values(actorEntries).execute();
+
+    res.status(201).send({
+      message: "Actor created and movies linked successfully",
+      person_id
+    });
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send({
+      message: "Error creating actor and linking movies",
+      error: e.message
+    });
+  }
+});
+
+app.delete("/actor", async (req, res) => {
+  const { person_id, movie_id } = req.body;
+  try {
+    await db
+      .deleteFrom("actor")
+      .where("person_id", "=", person_id)
+      .where("movie_id", "=", movie_id)
+      .execute();
+    res.status(204).send();
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({ message: "Error deleting actor" });
+  }
+});
+
+app.get("/actors", async (req, res) => {
+  try {
+    const actors = await db.selectFrom("person").selectAll().execute();
+    res.send(actors);
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({ message: "Error fetching actors" });
+  }
+});

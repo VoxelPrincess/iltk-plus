@@ -1,6 +1,8 @@
+// MovieDetails.js
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieDetails } from "./api";
+import "./MovieDetails.css";
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -23,14 +25,14 @@ const MovieDetails = () => {
   }
 
   return (
-    <div>
-      <h1>{movie.title}</h1>
-      <img src={movie.url} alt={movie.title} style={{ width: "300px" }} />
-      <p>Year: {movie.publish_year}</p>
-      <h2>Actors:</h2>
-      <ul>
+    <div className="movie-details-container">
+      <h1 className="movie-title">{movie.title}</h1>
+      <img src={movie.url} alt={movie.title} className="movie-poster-large" />
+      <p className="movie-year">Year: {movie.publish_year}</p>
+      <h2 className="actors-title">Actors:</h2>
+      <ul className="actors-list">
         {movie.actors.map((actor) => (
-          <li key={actor.id}>
+          <li key={actor.id} className="actor-item">
             <strong>{actor.person_name}</strong> as {actor.role_name}
           </li>
         ))}

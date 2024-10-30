@@ -1,0 +1,49 @@
+/* MovieDetails.css */
+.movie-details-container {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.movie-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.movie-poster-large {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 20px 0;
+}
+
+.movie-year {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.actors-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-top: 30px;
+}
+
+.actors-list {
+  list-style: none;
+  padding: 0;
+  color: #555;
+}
+
+.actor-item {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
