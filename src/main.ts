@@ -93,7 +93,7 @@ app.post("/movie", async (req, res) => {
   const { title, publish_year, picture_url } = req.body;
 
   try {
-    // Шаг 1: Добавляем изображение в таблицу picture
+    // Step 1: Add an image to the table picture
     const [newPicture] = await db
       .insertInto("picture")
       .values({
@@ -105,13 +105,13 @@ app.post("/movie", async (req, res) => {
 
     const picture_id = newPicture.id;
 
-    // Шаг 2: Добавляем фильм в таблицу movie с ссылкой на picture_id
+    // Step 2: Add movie to movie table with reference to picture_id
     const [newMovie] = await db
       .insertInto("movie")
       .values({
         title,
         publish_year,
-        primary_picture: picture_id // Используем ID добавленной картинки
+        primary_picture: picture_id // Use the ID of the added image
       })
       .returning(["id", "title", "publish_year", "primary_picture"])
       .execute();
@@ -147,7 +147,7 @@ app.post("/actor", async (req, res) => {
       });
     }
 
-    // Создаём новую запись в таблице person и получаем person_id
+    // Create a new record in the person table and get the person_id
     const [newPerson] = await db
       .insertInto("person")
       .values({
@@ -160,14 +160,14 @@ app.post("/actor", async (req, res) => {
 
     const person_id = newPerson.id;
 
-    // Подготавливаем данные для вставки связей актёра с фильмами
+    // Prepare data for inserting actor-film connections
     const actorEntries = movie_ids.map((movie_id) => ({
       person_id,
       movie_id,
       role_name
     }));
 
-    // Вставляем связи актёра с выбранными фильмами
+    // Insert actor's connections with selected films
     await db.insertInto("actor").values(actorEntries).execute();
 
     res.status(201).send({
