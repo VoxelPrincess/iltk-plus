@@ -58,6 +58,8 @@ Start the frontend development server, the frontend will be available at http://
 npm run dev
 ```
 
+The API description is in the file: [API.md](./API.md)
+
 ## Screenshots
 
 ### Movies List
